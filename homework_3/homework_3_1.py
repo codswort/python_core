@@ -18,7 +18,7 @@ map_results = get_test_statistics(results)
 def get_successfulness(map_results):
     total = sum(map_results.values())
     passed = map_results.get('PASS')
-    return total, passed/total*100
+    return total, passed/total*100 if total else 0
 
 total, percent = get_successfulness(map_results)
 
