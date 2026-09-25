@@ -9,14 +9,13 @@
 
 count = int(input('Enter a count autotests: '))
 number = 1
-attempts = 0
 results = {
     'PASS': 0,
     'FAIL': 0,
     'SKIP': 0
 }
-while attempts < count:
-    res = input(f'Enter result for {number} test: ')
+for attempts in range(0, count):
+    res = input(f'Enter result for {number} test: ').upper()
     if res == 'PASS':
         results['PASS'] += 1
         attempts += 1
