@@ -11,6 +11,8 @@ for i in range(1,4):
     if password == 'Python123':
         print('Autorization successful')
         break
-    else:
+    elif i < 3:
         print('Wrong password, lost ', count, ' attempts')
+    else:
+        print('Authorization blocked')
 
