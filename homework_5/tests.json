@@ -1,0 +1,27 @@
+[
+  {
+    "name": "test1",
+    "status": "PASS",
+    "duration": 1.2
+  },
+  {
+    "name": "test2",
+    "status": "FAIL",
+    "duration": 0.9
+  },
+  {
+    "name": "test3",
+    "status": "SKIP",
+    "duration": 0.1
+  },
+  {
+    "name": "test4",
+    "status": "PASS",
+    "duration": 3.1
+  },
+  {
+    "name": "test5",
+    "status": "FAIL",
+    "duration": 3.1
+  }
+]
