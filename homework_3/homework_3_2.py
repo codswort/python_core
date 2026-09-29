@@ -13,5 +13,8 @@ def print_report(test_cases, statuses):
             map_results[status] += 1
     return map_results
 
-failed = print_report(test_cases, statuses).get('FAIL', 0)
+report = print_report(test_cases, statuses)
+for key, value in report.items():
+    print(f"{key}: {value} шт.")
+failed = report.get('FAIL', 0)
 print('Test play is fail' if failed > 0 else 'Test play is pass')
