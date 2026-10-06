@@ -43,13 +43,13 @@ else:
     max_duration = max(x['duration'] for x in data)
     max_duration_test = list(filter(lambda x: x['duration'] == max_duration, data))
 
-    with open('result.txt', 'w', encoding='utf-8') as f:
-        f.write(f'Общее количество тестов: {len(data)} шт.\n')
-        for key, value in status_counts.items():
-            f.write(f'{key} - {value} шт.\n')
-        f.write(f'\nУпавшие тесты:\n')
-        for x in failed:
-            f.write(f'{x["name"]}\n')
-        f.write(f'\nСамый длительный тест - {max_duration_test[0]["name"]}, его длительность = {max_duration}\n')
-        f.write(f'Суммарное время выполнения всех тестов составляет {total_duration}')
+    result = {}
+    result['total_count'] = len(data) # Общее количество тестов
+    result.setdefault("total_tests", []).append({key: value for key, value in status_counts.items() if key not in failed})
+    result.setdefault("failed_tests", []).extend([key["name"] for key in failed])
+    result["test_with_max_duration"] = {"name": max_duration_test[0]["name"], "duration": max_duration}
+    result["total_duration_all_tests"] = total_duration
+
+    with open("result.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=4)
 

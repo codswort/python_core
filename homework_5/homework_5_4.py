@@ -7,6 +7,7 @@ def check_status(status):
     print('Корректный статус')
 
 try:
+    check_status('PASS')
     check_status('SKIPs')
 except InvalidTestStatusError as its:
     print(its)
