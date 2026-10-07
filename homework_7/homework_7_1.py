@@ -21,12 +21,18 @@ class CreditCard:
 
 
 try:
-    card = CreditCard(2323, 100)
-    card.show_info()
-    card.deposit(10)
-    card.show_info()
-    card.withdraw(110)
-    card.show_info()
+    card1 = CreditCard(2323, 100)
+    card2 = CreditCard(2324, 200)
+    card3 = CreditCard(2325, 300)
+
+    card1.deposit(50)
+    card2.deposit(50)
+    card3.withdraw(70)
+
+    card1.show_info()
+    card2.show_info()
+    card3.show_info()
+
 except TypeError as te:
     print(te)
 except ValueError as ve:
