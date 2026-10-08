@@ -2,7 +2,9 @@
 def create_time_checker(max_time):
 
     def is_limited_time(real_time):
-        return real_time > max_time
+        if real_time > max_time:
+            return "Лимит превышен"
+        return "Лимит не превышен"
 
     return is_limited_time
 
