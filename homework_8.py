@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from os import name
 
 '''
 Абстрактный класс, чтобы не писать конструкцию if-else
@@ -72,6 +71,7 @@ class Gerbera(Flowers):
     def get_description(self):
         return f'{self.name} - яркий цветок, похожий на ромашку, с широкой палитрой оттенков'
 
+
 class Chrysanthemum (Flowers):
     def __init__(self, name, price, life_time):
         super().__init__(name, price, life_time)
@@ -105,13 +105,13 @@ class Accessory:
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price})"
 
+
 class Bouquet:
     def __init__(self, name):
         self.__name = name
         self.__flowers = []
         self.__accessories = []
         self.__flowers_amount = 0
-
 
     @property
     def name(self):
@@ -158,12 +158,12 @@ class Bouquet:
         return self.get_flowers_cost() + self.get_accessories_cost()
 
     def get_life_time(self):
-        return round(self.get_flowers_cost() / self.__flowers_amount, 2)
+        return round(sum(flowers.life_time for flowers in self.__flowers)/self.__flowers_amount, 2)
 
     def sort_by_price(self):
         return sorted(self.__flowers, key=lambda f: f.price)
 
-    def is_consiste(self, name):
+    def is_consist(self, name):
         for flower in self.__flowers:
             if flower.name == name:
                 return True
@@ -186,8 +186,7 @@ class Bouquet:
                     raise TypeError(f'Добавляемый элемент должен быть объектом {class_name.__name__}')
 
 
-
-rose = Rose("Роза", 100.1, 3)
+rose = Rose("Роза", 100.1, 3.2)
 peony = Peony("Пион", 10.21, 3)
 gerbera = Gerbera("Гербер", 102, 2)
 chrysanthemum = Chrysanthemum("Хризантема", 103.4, 4)
@@ -201,6 +200,7 @@ print(my_bouquet.flowers)
 print(my_bouquet.accessories)
 print(my_bouquet.get_composition())
 print(my_bouquet.sort_by_price())
-print(my_bouquet.is_consiste("роза"))
+print(my_bouquet.is_consist("роза"))
+print(my_bouquet.get_life_time())
 
 
